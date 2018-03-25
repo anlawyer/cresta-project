@@ -7,7 +7,9 @@ class Page extends Component {
     super(props);
     this.state = {
       newChat: '',
-      chatList: ['Hello, I have an issue.', 'Sure, how can I help you?']
+      chatList: ['Hello, I have an issue.', 'Sure, how can I help you?'],
+      customer: 'example customer',
+      issue: ''
     };
 
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -43,9 +45,11 @@ class Page extends Component {
         <Header />
         <div className='columns'>
 
-          <div className='column is-6'>
-            <ChatBox>
-
+          <div className='column is-5 is-offset-1'>
+            <ChatBox
+              customer={this.state.customer}
+              icon={this.state.issue}
+            >
               <ul>
                 {this.state.chatList.map((chat) =>
                   <TextBox value={chat} />
@@ -62,7 +66,10 @@ class Page extends Component {
                   />
                 </p>
                 <p className='control'>
-                  <Button onClick={this.handleFormSubmit}>
+                  <Button
+                    onClick={this.handleFormSubmit}
+                    disabled={!(this.state.newChat)}
+                  >
                     Send
                   </Button>
                 </p>
@@ -70,7 +77,7 @@ class Page extends Component {
             </ChatBox>
           </div>
 
-          <div className='column is-6'>
+          <div className='column is-5'>
             <ChatBox>
               <Input />
             </ChatBox>
