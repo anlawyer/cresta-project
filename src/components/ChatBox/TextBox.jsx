@@ -1,9 +1,7 @@
 import React from 'react';
 
 export const TextBox = props => (
-  <div className='box'>
-    <p>
-      {props.value}
-    </p>
-  </div>
+  <li className='box'>
+    {props.value}
+  </li>
 );

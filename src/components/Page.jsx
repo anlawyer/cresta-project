@@ -6,22 +6,32 @@ class Page extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      currResponse: '',
-      newMsg: ''
+      newChat: '',
+      chatList: ['Hello, I have an issue.', 'Sure, how can I help you?']
     };
 
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
+  // add most recent chat to list of chats above, and clear text box
   handleFormSubmit (event) {
     event.preventDefault();
-    this.setState({ newMsg: this.state.currResponse });
+    this.setState(
+      {chatList: this.state.chatList.concat([
+        this.state.newChat
+      ])},
+      () => {
+        this.setState({
+          newChat: ''
+        });
+      }
+    );
   }
 
+  // grab values of input and store in state
   handleInputChange (event) {
     const { name, value } = event.target;
-    console.log(event.target.value);
     this.setState({
       [name]: value
     });
@@ -36,16 +46,18 @@ class Page extends Component {
           <div className='column is-6'>
             <ChatBox>
 
-              <TextBox
-                value={this.state.newMsg}
-              />
-
+              <ul>
+                {this.state.chatList.map((chat) =>
+                  <TextBox value={chat} />
+                )}
+              </ul>
+              <br />
               <div className='field is-grouped'>
                 <p className='control is-expanded'>
                   <Input
                     placeholder='Enter response'
-                    name='currResponse'
-                    value={this.state.currResponse}
+                    name='newChat'
+                    value={this.state.newChat}
                     onChange={this.handleInputChange}
                   />
                 </p>
