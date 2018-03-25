@@ -9,7 +9,8 @@ class Page extends Component {
       newChat: '',
       chatList: ['Hello, I have an issue.', 'Sure, how can I help you?'],
       customer: 'example customer',
-      issue: ''
+      issue: 'fa fa-credit-card',
+      isActive: false
     };
 
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -44,11 +45,10 @@ class Page extends Component {
       <div>
         <Header />
         <div className='columns'>
-
           <div className='column is-5 is-offset-1'>
             <ChatBox
               customer={this.state.customer}
-              icon={this.state.issue}
+              issueIcon={this.state.issue}
             >
               <ul>
                 {this.state.chatList.map((chat) =>

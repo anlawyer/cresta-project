@@ -1,7 +1,9 @@
 import React from 'react';
 
 export const TextBox = props => (
-  <li className='box'>
-    {props.value}
-  </li>
+  <div className='tile is-6 box'>
+    <li className='tile'>
+      {props.value}
+    </li>
+  </div>
 );
