@@ -2,8 +2,9 @@
   "name": "react-frontend-project",
   "version": "0.1.0",
   "private": true,
-   "homepage": "https://anlawyer.github.io/react-frontend-project/",
+  "homepage": "https://anlawyer.github.io/react-frontend-project/",
   "dependencies": {
+    "gh-pages": "^1.1.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "1.1.1"
